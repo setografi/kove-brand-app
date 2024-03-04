@@ -25,24 +25,27 @@ function MainWrapperEvent() {
   gsap.registerPlugin(ScrollTrigger);
 
   const containerRef = useRef();
-  const sectionRefs = useRef([]);
+  const section = useRef();
 
   useGSAP(
     () => {
+      const container = containerRef.current;
+      const section = container.querySelectorAll("section");
+
       gsap
         .timeline({
           scrollTrigger: {
-            trigger: containerRef.current,
+            trigger: container,
             scrub: 1,
             pin: true,
             start: "top top",
             end: "+=3300",
           },
         })
-        .to(containerRef.current, {
+        .to(container, {
           x: () =>
             -(
-              containerRef.current.scrollWidth -
+              container.scrollWidth -
               document.documentElement.clientWidth -
               95
             ) + "px",
@@ -58,7 +61,7 @@ function MainWrapperEvent() {
             scrub: 2.5,
           },
         })
-        .to({}, { duration: 1 / (sectionRefs.current.length + 1) });
+        .to({}, { duration: 1 / (section.length + 1) });
 
       gsap.to(".col-1", {
         y: -250,
@@ -134,12 +137,6 @@ function MainWrapperEvent() {
     { scope: containerRef }
   );
 
-  useEffect(() => {
-    sectionRefs.current = Array.from(
-      containerRef.current.querySelectorAll("section")
-    );
-  }, []);
-
   return (
     <>
       <div ref={containerRef} className="main-wrapper flex">
@@ -151,81 +148,81 @@ function MainWrapperEvent() {
             <div className="image-gallery flex h-screen">
               <div className="col flex flex-col items-center justify-center col-1">
                 <img
-                  className="min-h-[300px] h-auto w-52 object-cover bg-black py-1 px-2"
+                  className="min-h-[300px] h-auto w-[200px] object-cover bg-black py-1 px-2"
                   src={Col1Image}
                   alt=""
                 />
                 <img
-                  className="min-h-[300px] h-auto w-52 object-cover bg-black py-1 px-2"
+                  className="min-h-[300px] h-auto w-[200px] object-cover bg-black py-1 px-2"
                   src={Col2Image}
                   alt=""
                 />
                 <img
-                  className="min-h-[300px] h-auto w-52 object-cover bg-black py-1 px-2"
+                  className="min-h-[300px] h-auto w-[200px] object-cover bg-black py-1 px-2"
                   src={Col3Image}
                   alt=""
                 />
                 <img
-                  className="min-h-[300px] h-auto w-52 object-cover bg-black py-1 px-2"
+                  className="min-h-[300px] h-auto w-[200px] object-cover bg-black py-1 px-2"
                   src={Col4Image}
                   alt=""
                 />
                 <img
-                  className="min-h-[300px] h-auto w-52 object-cover bg-black py-1 px-2"
+                  className="min-h-[300px] h-auto w-[200px] object-cover bg-black py-1 px-2"
                   src={Col5Image}
                   alt=""
                 />
               </div>
               <div className="col flex flex-col items-center justify-center col-2">
                 <img
-                  className="min-h-[300px] h-auto w-52 object-cover bg-black py-1"
+                  className="min-h-[300px] h-auto w-[200px] object-cover bg-black py-1"
                   src={Col6Image}
                   alt=""
                 />
                 <img
-                  className="min-h-[300px] h-auto w-52 object-cover bg-black py-1"
+                  className="min-h-[300px] h-auto w-[200px] object-cover bg-black py-1"
                   src={Col7Image}
                   alt=""
                 />
                 <img
-                  className="min-h-[300px] h-auto w-52 object-cover bg-black py-1"
+                  className="min-h-[300px] h-auto w-[200px] object-cover bg-black py-1"
                   src={Col8Image}
                   alt=""
                 />
                 <img
-                  className="min-h-[300px] h-auto w-52 object-cover bg-black py-1"
+                  className="min-h-[300px] h-auto w-[200px] object-cover bg-black py-1"
                   src={Col9Image}
                   alt=""
                 />
                 <img
-                  className="min-h-[300px] h-auto w-52 object-cover bg-black py-1"
+                  className="min-h-[300px] h-auto w-[200px] object-cover bg-black py-1"
                   src={Col10Image}
                   alt=""
                 />
               </div>
               <div className="col flex flex-col items-center justify-center col-3">
                 <img
-                  className="min-h-[300px] h-auto w-52 object-cover bg-black py-1 px-2"
+                  className="min-h-[300px] h-auto w-[200px] object-cover bg-black py-1 px-2"
                   src={Col11Image}
                   alt=""
                 />
                 <img
-                  className="min-h-[300px] h-auto w-52 object-cover bg-black py-1 px-2"
+                  className="min-h-[300px] h-auto w-[200px] object-cover bg-black py-1 px-2"
                   src={Col12Image}
                   alt=""
                 />
                 <img
-                  className="min-h-[300px] h-auto w-52 object-cover bg-black py-1 px-2"
+                  className="min-h-[300px] h-auto w-[200px] object-cover bg-black py-1 px-2"
                   src={Col13Image}
                   alt=""
                 />
                 <img
-                  className="min-h-[300px] h-auto w-52 object-cover bg-black py-1 px-2"
+                  className="min-h-[300px] h-auto w-[200px] object-cover bg-black py-1 px-2"
                   src={Col14Image}
                   alt=""
                 />
                 <img
-                  className="min-h-[300px] h-auto w-52 object-cover bg-black py-1 px-2"
+                  className="min-h-[300px] h-auto w-[200px] object-cover bg-black py-1 px-2"
                   src={Col15Image}
                   alt=""
                 />
@@ -237,7 +234,7 @@ function MainWrapperEvent() {
           <div className="side-bar flex flex-col justify-between items-center w-[65px] bg-white h-full p-4 -left-[10%] top-0 opacity-0 z-10">
             <i className="fa-solid fa-expand"></i>
             <div className="brand-name">kove</div>
-            <div className="des text-[10px] w-52 uppercase mb-20">
+            <div className="des text-[10px] w-[200px] uppercase mb-20">
               HIGH QUALITY FABRICS. <br />
               designed & mad <br /> in iceland.
               <br />
