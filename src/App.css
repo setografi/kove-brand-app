@@ -1,19 +1,29 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-@font-face {
-  font-family: m;
-  src: url(./font/MargarethRosinante-Regular.otf);
-}
-
 body {
   overflow-x: hidden;
   font-family: m;
 }
 
+/* Homepage */
+.main-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.horizontal-wrapper {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  white-space: nowrap;
+}
+
+.vertical-sections {
+  position: relative;
+  width: 100%;
+}
+
+/* SectionTwo */
 .loop span {
   animation: loop 10s linear infinite;
   display: inline-block;
